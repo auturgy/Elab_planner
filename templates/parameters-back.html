@@ -1,0 +1,55 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<script type=text/javascript>
+$(function() {
+    $('button#calculate').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/_change_value', {
+        a: $(this).closest('tr').find('input[type="number"]').val(),
+        b: $(this).closest('tr').find('td').first().html()
+      }, function(data) {
+        alert(data.result);
+      });
+      return false;
+    });
+  });
+</script>
+
+</head>
+
+<body>
+<div class="container">
+  <h2>Table</h2>
+	<tr>
+
+</tr>
+  <p>List of all parameters available for the arducopter code:</p>                                                                                      
+  <div class="table-responsive">          
+  <table class="table">
+    <td>Parameter</td>
+<td>Value</td>
+      {% for key, value in test.iteritems() %}
+         
+           <tr>
+      <td>{{key}}</td>
+      <td>{{value}}</td>
+      <td>
+        <input type="number" size=5 step="0.0001" />
+      </td>
+      <td>
+        <button id="calculate">Change Value</button>
+      </td>
+    </tr>            
+         {% endfor %}
+    
+<table>
+
+</body>
+</html>

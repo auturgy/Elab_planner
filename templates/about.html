@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="csrf-token" content="IjNiNTUzMzkyNDliNGJkNjYzMDNkYjZmM2UyM2RiZWJkMTBkNzhmZmYi.DOFvSg.r0USjXt2YZKAf4_1X-txWWlJ1uM"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Elab Ground Station | Demo 3</title>
+		<meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
+		<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="static/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/icons.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/style3.css" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="static/js/gamepad.js"></script>
+    
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+ <script type="text/javascript">
+        $SCRIPT_ROOT = "";
+</script>
+
+<script type="text/javascript">
+// when user browses to page
+$('#content').hide();
+$('#loading').show();
+
+// then when the #content div has loaded
+$(window).bind('load', function() {
+$('#loading').hide();
+$('#content').fadein('600');
+});
+ </script>
+
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+<header class="codrops-header">
+				<div class="container">
+
+
+			</header>	
+
+	<body>
+		<div class="container">
+
+<a href="https://gamedevelopment.tutsplus.com/tutorials/using-the-html5-gamepad-api-to-add-controller-support-to-browser-games--cms-21345">source : Elab.co.jp</a>
+<div id="gamepadPrompt"></div>
+<div id="gamepadDisplay"></div>
+
+
+		
+<nav id="bt-menu" class="bt-menu">
+				<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+				<ul>
+					<li><a href="#" class="bt-icon icon-user-outline">About</a></li>
+					<li><a href="parameters.html" class="bt-icon icon-windows">Parameters</a></li>
+					<li><a href="missions.html" class="bt-icon icon-speaker">Missions</a></li>
+					<li><a href="/" class="bt-icon icon-speaker">Dashboard</a></li>
+					<li><a href="#" class="bt-icon icon-star">tuning</a></li>
+					<li><a href="#" class="bt-icon icon-bubble">Calibration</a></li>					
+				</ul>
+			</nav>
+		</div><!-- /container -->
+	</body>
+	<script src="static/js/classie.js"></script>
+	<script src="static/js/borderMenu.js"></script>
+</html>

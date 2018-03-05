@@ -1,0 +1,1 @@
+{"drone_position": {"latitude": 139.6722028, "longitude": 35.6052797}, "message": "success"}
