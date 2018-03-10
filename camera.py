@@ -20,8 +20,8 @@ class VideoCamera(object):
         # from a webcam, comment the line below out and use a video file
         # instead.
         self.video = cv2.VideoCapture(0)
-	self.video.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 320)
-	self.video.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 240)
+	self.video.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH, 1280)
+	self.video.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT, 720)
         self.video.set(cv2.cv.CV_CAP_PROP_FPS, 23)
 
         # If you decide to use video.mp4, you must have this file in the folder
