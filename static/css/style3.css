@@ -87,6 +87,7 @@ margin-left:0%;
   padding: 0 10px;
   font-size: 15px;
   color: #666;
+  display: none;
 }
 
 .gauge-copy {
@@ -183,10 +184,10 @@ h7 span.spacer {
     left: 16px;
 }
 
-.bottom-centered {
-    position: absolute;
+.bottom-center {
+    position: relative;
     bottom: 14px;
-    left: 580px;
+    left: 0px;
 }
 
 /* Top right text */
@@ -464,7 +465,7 @@ h7 span.spacer {
   color: $button-text-color;
   border-radius: 4px;
   bottom: 14px;
-  left: 1200px;
+  left: 770px;
   border: none;
   cursor: pointer;
   position: absolute;
@@ -577,7 +578,7 @@ h7 span.spacer {
   border-radius: 4px;
   border: none;
   bottom: 14px;
-  left: 720px;
+  left: 330px;
   cursor: pointer;
   position: absolute;
   transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
