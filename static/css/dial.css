@@ -1,0 +1,9 @@
+.knob-scroll {
+    position: fixed;
+}
+
+/* Hide input to avoid FOUC */
+/* Will be shown when JS runs */
+.knob-scroll input {
+    display: none;
+}

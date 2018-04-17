@@ -1,7 +1,7 @@
 var hasGP = false;
  var repGP;
 
-var csrftoken = $('meta[name=csrf-token]').attr('content')
+var csrftoken = $('meta[name=csrf-token]').attr('content');
 
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
@@ -11,11 +11,11 @@ $.ajaxSetup({
     }
 })
 
- function canGame() {
+function canGame() {
    return "getGamepads" in navigator;
  }
 
-function map(p1) {
+function map_lol(p1) {
     return ((p1 - (-1)) * (1934 - (1066)) / ((1) - (-1)) + 1066);
 }
 
@@ -24,7 +24,7 @@ function map_inversed(p2) {
 }
 
  function reportOnGamepad() {
-   var gp = navigator.getGamepads()[0];
+   var gp = navigator.getGamepads()[2];
    var html = "";
    html += "id: " + gp.id + "<br/>";
 
@@ -35,11 +35,11 @@ function map_inversed(p2) {
    }
 
    for (var i = 0; i < gp.axes.length; i += 1) {
-     html += "Stick " + (Math.ceil(i / 1) + 0) + ": " + map(gp.axes[i]) + "," + "<br/>";
+     html += "Stick " + (Math.ceil(i / 1) + 0) + ": " + map_lol(gp.axes[i]) + "," + "<br/>";
    }
 
 var movies = {
-    'throttle': map(gp.axes[1]),
+    'throttle': map_lol(gp.axes[1]),
     'yaw': map_inversed(gp.axes[2])
     }
 
@@ -59,34 +59,32 @@ $.ajax({
    $("#gamepadDisplay").html(html);
  }
 
- $(document).ready(function() {
+ 
 
-   if (canGame()) {
+document.addEventListener('DOMContentLoaded', function () {
+   window.time = 0;
+   window.time1 = 0;//global declaration
+    function autorefresh() {
+        var isChecked = document.getElementById("autoupdate").checked;
+        if (isChecked == true) {
 
-     var prompt = "To begin using your gamepad, connect it and press any button!";
-     $("#gamepadPrompt").text(prompt);
 
-     $(window).on("gamepadconnected", function() {
-       hasGP = true;
-       $("#gamepadPrompt").html("Gamepad connected!");
-       console.log("connection event");
-       repGP = window.setInterval(reportOnGamepad, 10);
-     });
 
-     $(window).on("gamepaddisconnected", function() {
-       console.log("disconnection event");
-       $("#gamepadPrompt").text(prompt);
-       window.clearInterval(repGP);
-     });
+            time1 = setInterval(reportOnGamepad,50);
 
-     //setup an interval for Chrome
-     var checkGP = window.setInterval(function() {
-       console.log('checkGP');
-       if (navigator.getGamepads()[0]) {
-         if (!hasGP) $(window).trigger("gamepadconnected");
-         window.clearInterval(checkGP);
-       }
-     }, 500);
-   }
+            time = setInterval(function () {
+               alert('hello');
+            }, 5000);
 
- });
+
+
+
+        } else if (isChecked == false) {
+            clearInterval(time);
+            clearInterval(time1);
+            console.log("byebye");
+        }
+    }
+autorefresh();
+document.getElementById('autoupdate').addEventListener('click', autorefresh);
+});

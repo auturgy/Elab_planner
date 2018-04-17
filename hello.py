@@ -34,6 +34,7 @@ def state_msg():
     return {
         "armed": vehicle.armed,
         "alt": vehicle.location.global_relative_frame.alt,
+        "throttle": vehicle.channels['1'],
         "mode": vehicle.mode.name,
         "heading": vehicle.heading or 0,
         "lat": vehicle.location.global_relative_frame.lat,

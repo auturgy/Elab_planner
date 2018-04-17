@@ -1,3 +1,18 @@
+ var globmsg = null;
+    var source = new EventSource('/api/sse/state');
+    source.onmessage = function(event) {
+        var msg = JSON.parse(event.data);
+        if (!globmsg) {
+            $("#altitude").text("Altitude: " + msg.alt);
+            $("#battery").text("Battery level: " + msg.battery);
+            $("#airspeed").text("Groundspeed: " + msg.airspeed);
+            $("#mode").text(msg.mode);
+            $(".text-box").val(msg.alt).trigger('change');
+            console.log(msg.throttle);
+        }
+    }
+
+
 
 var cloudmadeUrl = 'https://api.mapbox.com/styles/v1/diamondx/cj8cqnwa00hoi2succ6j4ws0m/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGlhbW9uZHgiLCJhIjoiY2o4Y3FkaDBnMGYxazJxcmxnaWozY3BmayJ9.VCKI441_mo6-ArU1qUU5pg';
 	            var subDomains = ['otile1','otile2','otile3','otile4'];
@@ -25,6 +40,7 @@ function update_position() {
 	var latLngs = [ iss.getLatLng() ];
     var markerBounds = L.latLngBounds(latLngs);
     map.fitBounds(markerBounds);
+    
     setTimeout(update_position, 3000);
     });
 }

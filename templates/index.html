@@ -1,39 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elab Ground Station | Demo 3</title>
-    <meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
-    <meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
-    <meta name="author" content="Codrops" />
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="static/css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/demo.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/icons.css" />
-    <link rel="stylesheet" type="text/css" href="static/css/style3.css" />
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="IjNiNTUzMzkyNDliNGJkNjYzMDNkYjZmM2UyM2RiZWJkMTBkNzhmZmYi.DOFvSg.r0USjXt2YZKAf4_1X-txWWlJ1uM"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+ <link rel="stylesheet" type="text/css" href="static/css/bootali.css" />
+ <link rel="stylesheet" type="text/css" href="static/css/toggle.css" />
+ <link rel="stylesheet" type="text/css" href="static/css/cube.css" />
+ <link rel="stylesheet" type="text/css" href="static/css/dial.css" />
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+    <script src="https://cdn.sobekrepository.org/includes/jquery-knob/1.2.0/jquery-knob.js"></script>
+  
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="static/js/cube.js"></script>
+  <script src="static/js/dial.js"></script>
 
-    <script src="static/js/gauge.js"></script>
-    <script src="static/js/button.js"></script>
 
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <style>
-    #map {
-        width: 350px;
-        height: 200px;
-    }
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="../favicon.ico">
 
-    @keyframes fade { 
-  from { opacity: 0.5; } 
-}
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
-.blinking {
-  animation: fade 1s infinite alternate;
-}
+ <script type="text/javascript">
+        $SCRIPT_ROOT = "";
+</script>
+
+  <script type="text/javascript">
+   
+</script>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<style>
+    
 </style>
 <script type="text/javascript">
     $SCRIPT_ROOT = {
@@ -41,7 +47,6 @@
             request.script_root | tojson | safe
         }
     };
-
     function get_altitude() {
         $.getJSON($SCRIPT_ROOT + '/_add_numbers',
             function(data) {
@@ -50,128 +55,168 @@
             )
     }
 </script>
-<script type="text/javascript">
-    var globmsg = null;
-    var source = new EventSource('/api/sse/state');
 
-    source.onmessage = function(event) {
-        var msg = JSON.parse(event.data);
-        if (!globmsg) {
-            $("#altitude").text("Altitude: " + msg.alt);
-            $("#battery").text("Battery level: " + msg.battery);
-            $("#airspeed").text("Groundspeed: " + msg.airspeed);
-            $("#mode").text(msg.mode);
-            $(".text-box").val(msg.alt).trigger('change');
-        }
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
     }
-</script>
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<script src="js/modernizr.custom.js"></script>
+    /* Create two equal columns that floats next to each other */
+
+    .column {
+      float: left;
+      width: 20%;
+      padding: 10px;
+      position: relative;
+    }
+
+    /* Clear floats after the columns */
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <header class="codrops-header">
-            <div class="container">
 
-                <div id="content" style="display:none;">
-                    <!--this stuff takes a long time to load-->
-                    <img src="{{ url_for('video_feed') }}" alt="test" style="width:100%;">
-                    <div class="bottom-left">
-                        <h7><span id="airspeed">Top Left</span>
-                        </h7>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
 
-                        <div class="guage-holder">
-                            <div class="circle-mask">
-                                <div class="circle">
-                                    <div class="circle-inner"></div>
-                                </div>
-                            </div>
-                            <div class="percentage">0 %</div>
-                            <input type="text" class="text-box" />
-                            <div class="gauge-copy"></div>
-                        </div>
-                    </div>
-                    <div class="top-left">
-                        <h7><span id="altitude">Top Left</span>
-                        </h7>
-                        
-                    </div>
+    <div class="col-sm-2">
+          <div class="row">
+                  <div class="row">
+                    <div class="col-8 col-sm-6">
+                       
+        
+        <input type="text" class="dial" id='knob2' value="50"/>
+        
+        <label for="knob2_input">VOLUME</label>
+        <input class="knob_input" id="knob2_input" type="text" data-knob-id="#knob2"/>
 
-                    <div class="bottom-center">
-                        <button class="bubbly-button">Take Off</button>
-                    <button class="bubbly-button-land">Land</button>
-                    </div>
 
-                    
-                    
-                    <div class="top-right">
-                        <h7><span id="mode">Top Left</span>
-                        </h7>
+
                     </div>
-                    <div class="bottom-right">
+                    <div class="col-8 col-sm-6">
+<input type="text" class="dial" id='knob1' value="50"/>
+        <label for="knob1_input">DRIVE</label>
+                      <input class="knob_input" id="knob1_input" type="text" data-knob-id="#knob1"/>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-8 col-sm-6">
+                       <script src="static/js/gamepad.js"></script>
+      
+                    </div>
+                    <div class="col-8 col-sm-6">
+                      <p id="text" style="display:none">Checkbox is CHECKED!</p>
+                    </div>
+                        <h2>RC control</h2>
+                                              <input type="checkbox" id="autoupdate"unchecked">
+                                            
+                  </div>
+     </div>
+   </div>
+        
+
+
+    <div class="col-sm-8 text-left"> 
+      <img src="{{ url_for('video_feed') }}" alt="test" style="width:100%;">
+  
+      <div class="bottom-left">
+          <h7><span id="airspeed">Top Left</span></h7>
+      </div>
+
+      <div class="bottom-right">
                         <div id="map"></div>
                         <script src="static/js/index.js"></script>
-                    </div>
-                </div>
+                        <link rel="stylesheet" type="text/css" href="static/css/map.css" />
 
-                <div id="loading">
-                    <!-- this is the loading gif -->
-                    <!--<img src="static/img/loading.gif">-->
-                    <div id="particle-canvas" style="width:100%;height:720px">
-
-
-                        <div class="centered">
-                            <button id="calculate">Click To Connect</button>
-                          
-                       </div>
-                       
-                   </div>
-
-               </div>
-           </div>
-       </header>
-
-
-
-
-
-        <nav id="bt-menu" class="bt-menu">
-            <a href="#" class="bt-menu-trigger"><span>Menu</span></a>
-            <ul>
-                <li><a href="about.html" class="bt-icon icon-user-outline">Drive</a>
-                </li>
-                <li><a href="parameters.html" class="bt-icon icon-windows">Parameters</a>
-                </li>
-                <li><a href="missions.html" class="bt-icon icon-speaker">Missions</a>
-                </li>
-                <li><a href="#" class="bt-icon icon-speaker">Dashboard</a>
-                </li>
-                <li><a href="#" class="bt-icon icon-star">tuning</a>
-                </li>
-                <li><a href="#" class="bt-icon icon-bubble">Calibration</a>
-                </li>
-            </ul>
-        </nav>
+      </div>
     </div>
-    <!-- /container -->
-</body>
-<script type="text/javascript">
-    // when user browses to page
-    //$('#content').hide();
-    //$('#loading').show();
+                        
 
-    // then when the #content div has loaded
-    $('button#calculate').bind('click', function() {
-        //$('#content').hide();
-        //$('#loading').show();
-       $('#loading').hide();
-       $('#content').show();
-    });
-</script>
+    <div class="col-sm-2 sidenav">
+     
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div id="scene3d"></canvas>
+      
+    </div>
+  
+
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+    <div class="row">
+   
+  </div>
+</footer>
+
 <script src="static/js/canvas.js"></script>
 <script src="static/js/classie.js"></script>
-<script src="static/js/borderMenu.js"></script>
 
+
+</body>
 </html>
