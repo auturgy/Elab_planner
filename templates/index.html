@@ -1,60 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="IjNiNTUzMzkyNDliNGJkNjYzMDNkYjZmM2UyM2RiZWJkMTBkNzhmZmYi.DOFvSg.r0USjXt2YZKAf4_1X-txWWlJ1uM"> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
- <link rel="stylesheet" type="text/css" href="static/css/bootali.css" />
- <link rel="stylesheet" type="text/css" href="static/css/toggle.css" />
- <link rel="stylesheet" type="text/css" href="static/css/cube.css" />
- <link rel="stylesheet" type="text/css" href="static/css/dial.css" />
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
-    <script src="https://cdn.sobekrepository.org/includes/jquery-knob/1.2.0/jquery-knob.js"></script>
-  
-
-  <script src="static/js/cube.js"></script>
-  <script src="static/js/dial.js"></script>
-
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <link rel="shortcut icon" href="../favicon.ico">
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta name="csrf-token" content="IjNiNTUzMzkyNDliNGJkNjYzMDNkYjZmM2UyM2RiZWJkMTBkNzhmZmYi.DOFvSg.r0USjXt2YZKAf4_1X-txWWlJ1uM"> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.1.5/adapter.min.js" ></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.1.0/bootbox.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"></script>
+<script src="static/js/janus.js"></script>
+<script src="static/js/toggle.js"></script>
+<script src="static/js/streamingtest.js"></script>
 
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+<script src="static/js/gamepad.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/cube.css" />
+<link rel="stylesheet" type="text/css" href="static/css/index.css" />
+<link rel="stylesheet" type="text/css" href="static/css/dial.css" />
+
+ <script>
+  $(function() {
+    $(".navbar-static-top").load("navbar.html", function() {
+      $(".navbar-static-top li.dropdown").addClass("active");
+      $(".navbar-static-top a[href='streamingtest.html']").parent().addClass("active");
+    });
+    $(".footer").load("footer.html");
+  });
+</script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="/static/css/demo.css" type="text/css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css" type="text/css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+<link rel="shortcut icon" href="../favicon.ico">
+
 
  <script type="text/javascript">
         $SCRIPT_ROOT = "";
 </script>
 
-  <script type="text/javascript">
-   
-</script>
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<style>
-    
-</style>
-<script type="text/javascript">
-    $SCRIPT_ROOT = {
-        {
-            request.script_root | tojson | safe
-        }
-    };
-    function get_altitude() {
-        $.getJSON($SCRIPT_ROOT + '/_add_numbers',
-            function(data) {
-                $("#flight_mode").text(data.result);
-            }
-            )
-    }
-</script>
+
 
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -144,49 +136,43 @@
 
     <div class="col-sm-2">
           <div class="row">
-                  <div class="row">
-                    <div class="col-8 col-sm-6">
-                       
-        
-        <input type="text" class="dial" id='knob2' value="50"/>
-        
-        <label for="knob2_input">VOLUME</label>
-        <input class="knob_input" id="knob2_input" type="text" data-knob-id="#knob2"/>
-
-
-
-                    </div>
-                    <div class="col-8 col-sm-6">
-<input type="text" class="dial" id='knob1' value="50"/>
-        <label for="knob1_input">DRIVE</label>
-                      <input class="knob_input" id="knob1_input" type="text" data-knob-id="#knob1"/>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-8 col-sm-6">
-                       <script src="static/js/gamepad.js"></script>
-      
-                    </div>
-                    <div class="col-8 col-sm-6">
-                      <p id="text" style="display:none">Checkbox is CHECKED!</p>
-                    </div>
-                        <h2>RC control</h2>
-                                              <input type="checkbox" id="autoupdate"unchecked">
-                                            
-                  </div>
-     </div>
+                  <p id="text" style="display:none">Checkbox is CHECKED!</p>
+          		  <h2>RC control</h2>
+                  <input type="checkbox" id="autoupdate" unchecked">
+          </div>
+                                  
    </div>
         
 
 
-    <div class="col-sm-8 text-left"> 
-      <img src="{{ url_for('video_feed') }}" alt="test" style="width:100%;">
+    <div class="col-sm-8"> 
+      <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">Stream
+               <span class="label label-info hide" id="status"></span>
+               <span class="label label-primary hide" id="curres"></span>
+               <span class="label label-info hide" id="curbitrate"></span>
+               <span class="btn-group btn-group-sm">
+                 <button class="btn btn-primary" autocomplete="off" id="watch">Watch or Listen</button>
+                    <span class="btn-group btn-group-sm">
+                      <button autocomplete="off" id="streamset" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Streams list<span class="caret"></span>
+                      </button>
+                      <ul id="streamslist" class="dropdown-menu" role="menu">
+                      </ul>
+                    </span>
+               </span>
+              </h3>
+           </div>
+           <div class="panel-body" id="stream"></div>
+         </div>
   
       <div class="bottom-left">
           <h7><span id="airspeed">Top Left</span></h7>
       </div>
 
       <div class="bottom-right">
+      					
                         <div id="map"></div>
                         <script src="static/js/index.js"></script>
                         <link rel="stylesheet" type="text/css" href="static/css/map.css" />
@@ -197,25 +183,15 @@
 
     <div class="col-sm-2 sidenav">
      
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div id="scene3d"></canvas>
-      
-    </div>
-  
+		      <div class="well">
+		        <p>ADS</p>
+		        <div id="gamepadPrompt"></div>
+		<div id="gamepadDisplay"></div>
 
-  </div>
-</div>
+		      </div>
+		      <div id="scene3d"></canvas></div>
+	</div>
 
-<footer class="container-fluid text-center">
-    <div class="row">
-   
-  </div>
-</footer>
-
-<script src="static/js/canvas.js"></script>
-<script src="static/js/classie.js"></script>
 
 
 </body>

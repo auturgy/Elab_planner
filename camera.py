@@ -1,5 +1,5 @@
 import cv2
-import pyyolo
+#import pyyolo
 import numpy as np
 import sys
 
@@ -20,8 +20,8 @@ class VideoCamera(object):
         # from a webcam, comment the line below out and use a video file
         # instead.
         self.video = cv2.VideoCapture(0)
-	self.video.set(3, 1280)
-	self.video.set(4, 720)
+	self.video.set(3, 160)
+	self.video.set(4, 120)
         #self.video.set(cv2.CV_CAP_PROP_FPS, 23)
 
         # If you decide to use video.mp4, you must have this file in the folder

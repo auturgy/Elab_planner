@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-import time,sys,argparse, math, json, Queue, threading
+import time,sys,argparse, math, json, threading
 from importlib import import_module
 from dronekit import connect, VehicleMode
 from pymavlink import mavutil
@@ -7,7 +7,6 @@ from Queue import Queue
 from flask import Flask, render_template, jsonify, Response, request
 import time
 import decimal
-import json
 import urllib
 import atexit
 import os
@@ -17,9 +16,7 @@ from threading import Thread
 from subprocess import Popen
 from datetime import datetime
 from flask_triangle import Triangle
-#from camera_pi import Camera
-from camera import VideoCamera
-import json
+
 
 
 
@@ -46,7 +43,7 @@ def state_msg():
 
 app = Flask(__name__)
 
-vehicle = connect('/dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v2.x_0-if00', wait_ready=True, rate=10, baud=9600)
+vehicle = connect('/dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v2.x_0-if00', wait_ready=True, baud=9600)
 
 listeners_location = []
 listeners_location
@@ -68,7 +65,7 @@ def tcount():
             'longitude': lon_test,
             },
     }        
-        with open('/home/nvidia/Desktop/Elab_planner/static/js/helloworld.json', 'w') as f:
+        with open('/home/pi/Desktop/Elab_planner/static/js/helloworld.json', 'w') as f:
             json.dump(d, f)
 
             
@@ -138,9 +135,9 @@ def rc_override():
     data['throttle'] = request.json['throttle']
     data['yaw'] = request.json['yaw']
     #throttle = float(data['throttle'])
-    vehicle.channels.overrides = {'1':int(data['yaw']), '3':int(data['throttle'])}
+    #vehicle.channels.overrides = {'1':int(data['yaw']), '3':int(data['throttle'])}
     #type(data['yaw'])
-    #print(float(data['yaw']))
+    print(int(data['yaw']))
     #print(float(data['throttle']))
     #print(float(data['pitch']))
     return jsonify(data)
@@ -155,19 +152,6 @@ def index():
     msg = vehicle.mode.name
     return render_template('index.html',version1=msg)
 
-def gen(camera):
-    """Video streaming generator function."""
-    while True:
-        frame = camera.get_frame()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-
-
-@app.route('/video_feed')
-def video_feed():
-    """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(VideoCamera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
     
 if __name__ == '__main__':
     app.run(host = '0.0.0.0', threaded=True, debug=False)

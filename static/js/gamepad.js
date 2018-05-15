@@ -23,8 +23,8 @@ function map_inversed(p2) {
     return ((p2 - (-1)) * (1066 - (1934)) / ((1) - (-1)) + 1934);
 }
 
- function reportOnGamepad() {
-   var gp = navigator.getGamepads()[2];
+ function reportOnGamepad(event) {
+   var gp = navigator.getGamepads()[1];
    var html = "";
    html += "id: " + gp.id + "<br/>";
 
@@ -39,11 +39,12 @@ function map_inversed(p2) {
    }
 
 var movies = {
-    'throttle': map_lol(gp.axes[1]),
-    'yaw': map_inversed(gp.axes[2])
+    'throttle': map_inversed(gp.axes[1]),
+    'yaw': map_inversed(gp.axes[5])
     }
 
 $.ajax({
+          
             url: "/_rc_override",
             data: JSON.stringify(movies),
             type: 'POST',
@@ -67,20 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function autorefresh() {
         var isChecked = document.getElementById("autoupdate").checked;
         if (isChecked == true) {
+            time1 = setInterval(reportOnGamepad,100);
 
-
-
-            time1 = setInterval(reportOnGamepad,50);
-
-            time = setInterval(function () {
-               alert('hello');
-            }, 5000);
-
-
-
-
-        } else if (isChecked == false) {
-            clearInterval(time);
+               } else if (isChecked == false) {
+            
             clearInterval(time1);
             console.log("byebye");
         }

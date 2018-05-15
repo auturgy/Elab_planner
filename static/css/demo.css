@@ -11,7 +11,7 @@
 }
 
 body {
-	color: #fff;
+	color: #033c73;
 	font-family: 'Lato', Arial, sans-serif;
 }
 
@@ -19,6 +19,19 @@ a,
 a:focus {
 	outline: none;
 }
+
+.bottom-left {
+    position: absolute;
+    bottom: 51px;
+    left: 44px;
+    color: white;
+    background: black;
+    font-size: 25px;
+    padding: 5px;
+    border-radius: 14px;
+
+}
+
 
 .codrops-header {
 	position: relative;
