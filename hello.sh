@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python /home/nvidia/Desktop/Elab_planner/hello.py
+python /home/pi/Desktop/Elab_planner/hello.py &

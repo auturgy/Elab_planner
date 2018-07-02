@@ -36,7 +36,10 @@ def state_msg():
         "heading": vehicle.heading or 0,
         "lat": vehicle.location.global_relative_frame.lat,
         "lon": vehicle.location.global_relative_frame.lon,
-        "airspeed": vehicle.airspeed
+        "airspeed": vehicle.airspeed,
+        "roll": vehicle.attitude.roll,
+        "pitch": vehicle.attitude.pitch,
+        "yaw": vehicle.attitude.yaw,
     }
 
     
@@ -44,6 +47,8 @@ def state_msg():
 app = Flask(__name__)
 
 vehicle = connect('/dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v2.x_0-if00', wait_ready=True, baud=9600)
+
+#vehicle = connect('/dev/ttyAMA0', wait_ready=True, baud=9600)
 
 listeners_location = []
 listeners_location
@@ -129,17 +134,26 @@ def about():
 
 
 @app.route('/_rc_override', methods=['GET','POST'])
-
 def rc_override():
     data = {}
     data['throttle'] = request.json['throttle']
     data['yaw'] = request.json['yaw']
     #throttle = float(data['throttle'])
-    #vehicle.channels.overrides = {'1':int(data['yaw']), '3':int(data['throttle'])}
+    vehicle.channels.overrides = {'1':int(data['yaw']), '3':int(data['throttle'])}
     #type(data['yaw'])
     print(int(data['yaw']))
     #print(float(data['throttle']))
     #print(float(data['pitch']))
+    return jsonify(data)
+
+@app.route('/clear_override', methods=['GET','POST'])
+def clear_override():
+    data = {}
+    data['test1'] = request.json['test1']
+    #data['yaw'] = request.json['yaw']
+    #vehicle.channels.overrides = {'1':1500, '3':1500}
+    vehicle.channels.overrides = {}
+    #print(int(data['yaw']))
     return jsonify(data)
 
 

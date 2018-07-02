@@ -16,7 +16,7 @@ function canGame() {
  }
 
 function map_lol(p1) {
-    return ((p1 - (-1)) * (1934 - (1066)) / ((1) - (-1)) + 1066);
+    return ((p1 - (-1)) * (1700 - (1300)) / ((1) - (-1)) + 1300);
 }
 
 function map_inversed(p2) {
@@ -24,7 +24,7 @@ function map_inversed(p2) {
 }
 
  function reportOnGamepad(event) {
-   var gp = navigator.getGamepads()[1];
+   var gp = navigator.getGamepads()[0];
    var html = "";
    html += "id: " + gp.id + "<br/>";
 
@@ -39,8 +39,8 @@ function map_inversed(p2) {
    }
 
 var movies = {
-    'throttle': map_inversed(gp.axes[1]),
-    'yaw': map_inversed(gp.axes[5])
+    'throttle': map_lol(gp.axes[1]),
+    'yaw': map_lol(gp.axes[2])
     }
 
 $.ajax({
@@ -68,12 +68,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function autorefresh() {
         var isChecked = document.getElementById("autoupdate").checked;
         if (isChecked == true) {
-            time1 = setInterval(reportOnGamepad,100);
+            time1 = setInterval(reportOnGamepad,50);
 
                } else if (isChecked == false) {
             
             clearInterval(time1);
             console.log("byebye");
+            var empty = {'test1' : 1000}
+            $.ajax({
+            url: "/clear_override",
+            data: JSON.stringify(empty),
+            type: 'POST',
+            contentType: "application/json",
+            success: function(response) {
+                console.log("rc cleared");
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
         }
     }
 autorefresh();

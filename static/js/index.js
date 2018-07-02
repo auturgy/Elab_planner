@@ -8,7 +8,6 @@
             $("#airspeed").text("Groundspeed: " + msg.airspeed);
             $("#mode").text(msg.mode);
             $(".text-box").val(msg.alt).trigger('change');
-            console.log(msg.throttle);
         }
     }
 
