@@ -88,7 +88,7 @@ def api_sse_location():
                 result = q.get()
                 ev = sse_encode(result)
                 yield ev.encode()
-        except GeneratorExit: # Or maybe use flask signals
+        except GeneratorExit:
             listeners_location.remove(q)
 
     return Response(gen(), mimetype="text/event-stream")
@@ -105,6 +105,14 @@ def change_value():
     a = request.args.get('a', 0)
     b = request.args.get('b', 0)
     vehicle.parameters[str(b)]=float(a)
+    return jsonify(result=a)
+
+@app.route('/_pi_reboot')
+def pi_reboot():
+    a = request.args.get('a', 0)
+    command = "/usr/bin/sudo /sbin/shutdown -r now"
+    import subprocess
+    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
     return jsonify(result=a)
 
 

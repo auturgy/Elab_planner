@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bootstrap Example</title>
+<title>Elab Planner</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -25,7 +25,7 @@
 
 <script src="static/js/gamepad.js"></script>
 <link rel="stylesheet" type="text/css" href="static/css/cube.css" />
-<link rel="stylesheet" type="text/css" href="static/css/`nipplejs.css" />
+<link rel="stylesheet" type="text/css" href="static/css/nipplejs.css" />
 <link rel="stylesheet" type="text/css" href="static/css/joystick.css" />
 <link rel="stylesheet" type="text/css" href="static/css/index.css" />
 <link rel="stylesheet" type="text/css" href="static/css/dial.css" />
@@ -113,6 +113,25 @@
 </head>
 <body>
 
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+  </script>
+
+  <script type=text/javascript>
+    $(function() {
+      $('button#pireboot').bind('click', function() {
+        $.getJSON($SCRIPT_ROOT + '/_pi_reboot', {
+          a: 50,
+          b: 50
+        }, function(data) {
+          console.log("hello");
+        });
+        return false;
+      });
+    });
+  </script>
+
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -121,17 +140,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#"><img src="static/img/EAMSLAB_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <button id="pireboot" type="button" class="btn btn-default navbar-btn navbar-right">Reboot companion computer</button>
       </ul>
     </div>
   </div>
@@ -139,16 +155,13 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-
-    <div class="col-sm-2">
-      
-                  <p id="text" style="display:none">Checkbox is CHECKED!</p>
-          		  <h2>RC control</h2>
+    <div class="col-sm-2 sidenav">
+                      <p id="text" style="display:none">Checkbox is CHECKED!</p>
+                <h2>RC control</h2>
                 <div class="check-ali">
-                  <input type="checkbox" id="autoupdate" unchecked">
+                  <input type="checkbox" id="autoupdate" "unchecked">
                 </div>
-
-                <div class="touch-joystick">
+                                <div class="touch-joystick">
                   <div id="left"></div>
                                       
                                       <script src="/static/js/nipplejs.js" charset="utf-8"></script>
@@ -165,25 +178,8 @@
 
 
                 </div>
-  
-                                                
-
-
-
-
-                                                          
-
-
-
-                
-                  
-          	
-                                        
-   </div>
-        
-
-
-    <div class="col-sm-8"> 
+    </div>
+    <div class="col-sm-8 text-left"> 
       <div class="panel panel-default">
            <div class="panel-heading">
              <h3 class="panel-title">Stream
@@ -204,28 +200,18 @@
            </div>
            <div class="panel-body" id="stream"></div>
          </div>
-  
-      <div class="bottom-left">
-          <h7><span id="airspeed">Top Left</span></h7>
-      </div>
-
-      <div class="bottom-right">
-      					
-                        <div id="map"></div>
-                        <script src="static/js/index.js"></script>
-                        <link rel="stylesheet" type="text/css" href="static/css/map.css" />
-
-      </div>
-
     </div>
-                        
-
+    
+    
     <div class="col-sm-2 sidenav">
-     
-		      <div class="well">
-		        <p>ADS</p>
-		        <div id="gamepadPrompt"></div>
-		<div id="gamepadDisplay">
+      <div id="toto" class="well">
+            <p>Actions</p>
+            <button id="arm" class="btn" type="button">Arm</button>
+            <button id="arm" class="btn" type="button">Disam</button>
+            <button id="arm" class="btn" type="button">Take Off</button>
+            <button id="arm" class="btn" type="button">Land</button>
+            <div id="gamepadPrompt"></div>
+            <div id="gamepadDisplay">
                     <script>
                      var globmsg = null;
                         var source = new EventSource('/api/sse/state');
@@ -234,7 +220,7 @@
                     var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 10000);
                     var renderer = new THREE.WebGLRenderer();
                     
-                    $('#gamepadDisplay')[0].appendChild(renderer.domElement);
+                    $('#toto')[0].appendChild(renderer.domElement);
                     var geometry = new THREE.BoxGeometry(600, 600, 600, 10, 10, 10);
                     var material = new THREE.MeshBasicMaterial({color: 0xfffff, wireframe: true});
                     var cube = new THREE.Mesh(geometry, material);
@@ -258,15 +244,15 @@
                     };
                     render();
                     </script>
-
+            </div>
+      </div>
     </div>
+  </div>
+</div>
 
-		      </div>
-		      
-
-          
-	</div>
-
+<footer class="container-fluid text-center">
+  <p>Elab</p>
+</footer>
 
 </body>
 </html>
