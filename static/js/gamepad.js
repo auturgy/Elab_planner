@@ -16,11 +16,11 @@ function canGame() {
  }
 
 function map_lol(p1) {
-    return ((p1 - (-1)) * (1700 - (1300)) / ((1) - (-1)) + 1300);
+    return ((p1 - (-1)) * (1550 - (1450)) / ((1) - (-1)) + 1450);
 }
 
 function map_inversed(p2) {
-    return ((p2 - (-1)) * (1066 - (1934)) / ((1) - (-1)) + 1934);
+    return ((p2 - (-1)) * (1400 - (1600)) / ((1) - (-1)) + 1600);
 }
 
  function reportOnGamepad(event) {

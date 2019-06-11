@@ -1103,10 +1103,10 @@ Collection.prototype.processOnMove = function (evt) {
     // Prepare event's datas.
 
     function map_x(p2) {
-    return ((p2 - (94)) * (1066 - (1934)) / ((294) - (94)) + 1934);
+    return ((p2 - (94)) * (1300 - (1850)) / ((294) - (94)) + 1850);
     }
     function map_y(p2) {
-    return ((p2 - (202)) * (1066 - (1934)) / ((401) - (202)) + 1934);
+    return ((p2 - (202)) * (1300 - (1850)) / ((401) - (202)) + 1850);
     }
 
     var toSend = {
@@ -1221,7 +1221,8 @@ Collection.prototype.processOnEnd = function (evt) {
 
     var empty = {
                 'throttle' : 1500,
-                'yaw' : 1500
+                'yaw' : 1500,
+                'test1' : 1500
                 }
             $.ajax({
             url: "/clear_override",

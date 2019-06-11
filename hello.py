@@ -15,7 +15,6 @@ import socket
 from threading import Thread
 from subprocess import Popen
 from datetime import datetime
-from flask_triangle import Triangle
 
 
 
@@ -46,9 +45,9 @@ def state_msg():
 
 app = Flask(__name__)
 
-vehicle = connect('/dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v2.x_0-if00', wait_ready=True, baud=9600)
+vehicle = connect('/dev/serial/by-id/usb-ArduPilot_fmuv3_3D004F000451373137353433-if00', wait_ready=True)
 
-#vehicle = connect('/dev/ttyAMA0', wait_ready=True, baud=9600)
+#vehicle = connect('/dev/ttyAMA0', wait_ready=True)
 
 listeners_location = []
 listeners_location
@@ -70,7 +69,7 @@ def tcount():
             'longitude': lon_test,
             },
     }        
-        with open('/home/pi/Desktop/Elab_planner/static/js/helloworld.json', 'w') as f:
+        with open('/home/pi/Elab_planner/static/js/helloworld.json', 'w') as f:
             json.dump(d, f)
 
             
@@ -159,8 +158,9 @@ def clear_override():
     data = {}
     data['test1'] = request.json['test1']
     #data['yaw'] = request.json['yaw']
-    #vehicle.channels.overrides = {'1':1500, '3':1500}
+    vehicle.channels.overrides = {'1':1500, '3':1500}
     vehicle.channels.overrides = {}
+    print("ovveride canceled")
     #print(int(data['yaw']))
     return jsonify(data)
 
